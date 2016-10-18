@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by pithe (http://jsbin.com/fubudey/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="JavaScriptes óra">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Kumar+One+Outline" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Kumar+One" rel="stylesheet"> 
+  <title>JS Bin</title>
+<style id="jsbin-css">
+* { margin: 0; padding: 0; } /*nullázza a böngésző alapértelmezéseit*/
+
+html, body {
+  height: 100%;
+}
+
+#clock {
+  /text-align: center;
+  margin-left: 40%;
+  position: relative;
+  top: 50%;
+  font-family: 'Kumar One Outline', cursive;
+  font-family: 'Kumar One', cursive;
+  /color: #fff;
+  font-size: 60px;
+  margin-top: -30px;
+}
+
+</style>
+</head>
+<body>
+<div id="clock">12:13:14</div>
+
+  
+<script id="jsbin-javascript">
+function colorClock(){
+var date = new Date();
+var hours = date.getHours();
+var minutes = date.getMinutes();
+var seconds = date.getSeconds();
+var mseconds = date.getMilliseconds()/100;  
+/* console.log(hours + ':' + minutes + ':' + seconds); */
+
+var mseconds = parseInt(mseconds)
+
+if (seconds < 10) {
+  seconds = '0' + seconds;
+}
+if (minutes < 10) {
+  minutes = '0' + minutes;
+}
+if (hours < 10) {
+  hours = '0' + hours;
+}
+var clockFace = (hours + ':' + minutes + ':' + seconds + ':' + mseconds);
+var hexColor = '#' + hours + minutes + seconds;  
+  document.getElementById('clock').innerHTML = clockFace;
+  document.body.style.background = hexColor;
+  /*document.getElementById("clock").style.color = "blue";*/
+
+  var rnd1 = Math.floor((Math.random() * 255) + 0);
+  var rnd2 = Math.floor((Math.random() * 100) + 0);
+  var rnd3 = Math.floor((Math.random() * 100) + 0);  
+  
+  var ColorText = 'rgb(' + rnd1 + ',' + rnd2 + ',' + rnd3 + ')';
+ 
+  document.getElementById('clock').style.color = ColorText;
+  
+  setTimeout(function() {
+    colorClock();
+  }, 100);
+}
+
+colorClock();
+</script>
+</body>
+</html>
